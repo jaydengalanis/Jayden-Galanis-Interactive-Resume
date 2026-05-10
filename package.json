@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "homepage": "https://jaydengalanis.github.io/Jayden-Galanis-Interactive-Resume/",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "vite": "^8.0.10"
+  }
+}
