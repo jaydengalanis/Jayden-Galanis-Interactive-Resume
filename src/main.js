@@ -581,13 +581,21 @@ window.addEventListener('resize', () => {
 const listner = new THREE.AudioListener();
 camera.add(listner);
 const sound = new THREE.Audio(listner);
-
 const audioLoader = new THREE.AudioLoader();
+
 audioLoader.load('frutiger_aero.mp3', function(buffer) {
   sound.setBuffer(buffer);
   sound.setLoop(true); // Loop the music
   sound.setVolume(1); // Set volume (0.0 to 1.0)
-  sound.play();
+});
+
+document.addEventListener('click', () => {
+  if (sound.context.state === 'suspended') {
+    sound.context.resume();
+  }
+  if (!sound.isPlaying) {
+    sound.play();
+  }
 });
 
 let isMuted = false;
