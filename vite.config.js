@@ -1,5 +1,7 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
-export default defineConfig({
-  base: '/Jayden-Galanis-Interactive-Resume/'
-})
+export default defineConfig(({ command }) => ({
+  base: command === 'build'
+    ? '/Jayden-Galanis-Interactive-Resume/'
+    : '/',
+}));
