@@ -146,194 +146,479 @@ glowPlane.position.set(0, 1.9, -0.22);
 scene.add(glowPlane);
 
 // ─────────────────────────────────────────
-// 6. PANEL CONTENT
+// 6. SCREEN HTML — Retro OS Desktop
+// Replace sections 6 + 7 in main.js with this entire block
 // ─────────────────────────────────────────
-const panels = {
-  resume: `
-    <div class="panel-label">◈ DOSSIER.TXT</div>
-    <div class="panel-heading">Curriculum Vitae</div>
-    <div class="divider"></div>
-    <div class="resume-section">
-      <h3>◆ EDUCATION</h3>
-      <div class="resume-item">
-        <div class="role">Bachelor of Science — Cybersecurity</div>
-        <div class="org">University of Technology Sydney</div>
-        <div class="period">2022 – Present  ·  Year 3</div>
-        <p>Focused on network security, cloud infrastructure, and software development.</p>
-      </div>
-    </div>
-    <div class="resume-section">
-      <h3>◆ SKILLS</h3>
-      <div class="skill-tags">
-        <span class="tag">Python</span><span class="tag">AWS</span>
-        <span class="tag">Networking</span><span class="tag">Linux</span>
-        <span class="tag">Firewall Config</span><span class="tag">EFTPOS / ATM</span>
-        <span class="tag">Hardware Staging</span><span class="tag">Helpdesk L1/L2</span>
-        <span class="tag">Git</span><span class="tag">boto3</span>
-      </div>
-    </div>
-    <div class="resume-section">
-      <h3>◆ EXPERIENCE</h3>
-      <div class="resume-item">
-        <div class="role">Datapack Developer & Community Manager</div>
-        <div class="org">Independent · Minecraft Ecosystem</div>
-        <div class="period">Ongoing</div>
-        <p>Shipped a Minecraft Datapack with 1000+ downloads. Runs end-user support and release cycles across an active Discord community.</p>
-      </div>
-      <div class="resume-item">
-        <div class="role">Python Network Tooling</div>
-        <div class="org">Academic & Personal Projects</div>
-        <div class="period">2023 – Present</div>
-        <p>Network diagnostics and automation scripts. AWS firewall (security groups) via boto3.</p>
-      </div>
-    </div>
-  `,
-  projects: `
-    <div class="panel-label">◈ PROJECTS.DIR</div>
-    <div class="panel-heading">Things I've Built</div>
-    <div class="divider"></div>
-    <div class="project-card">
-      <div class="p-num">01</div>
-      <div class="p-body">
-        <div class="p-title">Minecraft Datapack</div>
-        <div class="p-desc">Custom game mechanics, items, and progression. 1000+ downloads, active Discord, ongoing support.</div>
-        <div class="skill-tags"><span class="tag">mcfunction</span><span class="tag">JSON</span><span class="tag">Community</span></div>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="p-num">02</div>
-      <div class="p-body">
-        <div class="p-title">Python Network Tools</div>
-        <div class="p-desc">Diagnostic and automation scripts. AWS security group management, latency monitoring, port scanning.</div>
-        <div class="skill-tags"><span class="tag">Python</span><span class="tag">AWS</span><span class="tag">boto3</span></div>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="p-num">03</div>
-      <div class="p-body">
-        <div class="p-title">This 3D Portfolio</div>
-        <div class="p-desc">Interactive scene built with Three.js and a custom Blender model. You're inside it right now.</div>
-        <div class="skill-tags"><span class="tag">Three.js</span><span class="tag">Blender</span><span class="tag">WebGL</span></div>
-      </div>
-    </div>
-  `,
-  hobbies: `
-    <div class="panel-label">◈ PERSONAL.LOG</div>
-    <div class="panel-heading">Life Beyond the Terminal</div>
-    <div class="divider"></div>
-    <div class="hobby-grid">
-      <div class="hobby-item"><div class="h-icon">⛏</div><div class="h-label">Minecraft</div><div class="h-desc">Modding & datapacks</div></div>
-      <div class="hobby-item"><div class="h-icon">🔐</div><div class="h-label">CTF Challenges</div><div class="h-desc">Security puzzles</div></div>
-      <div class="hobby-item"><div class="h-icon">🎮</div><div class="h-label">Gaming</div><div class="h-desc">Strategy & sandbox</div></div>
-      <div class="hobby-item"><div class="h-icon">☁️</div><div class="h-label">Cloud Tinkering</div><div class="h-desc">AWS home lab</div></div>
-      <div class="hobby-item"><div class="h-icon">🌐</div><div class="h-label">Communities</div><div class="h-desc">Building online spaces</div></div>
-      <div class="hobby-item"><div class="h-icon">📚</div><div class="h-label">Self-Learning</div><div class="h-desc">Always something new</div></div>
-    </div>
-  `,
-  contact: `
-    <div class="panel-label">◈ CONTACT.SYS</div>
-    <div class="panel-heading">Get In Touch</div>
-    <div class="divider"></div>
-    <p class="contact-intro">Seeking entry-level IT and helpdesk roles in Sydney. Open to hybrid and remote.</p>
-    <div class="contact-list">
-      <div class="contact-row"><span class="c-icon">✉</span><div><div class="c-label">Electronic Mail</div><div class="c-val">flame@example.com</div></div></div>
-      <div class="contact-row"><span class="c-icon">◈</span><div><div class="c-label">LinkedIn</div><div class="c-val">linkedin.com/in/flame</div></div></div>
-      <div class="contact-row"><span class="c-icon">◉</span><div><div class="c-label">GitHub</div><div class="c-val">github.com/flame</div></div></div>
-      <div class="contact-row"><span class="c-icon">◎</span><div><div class="c-label">Location</div><div class="c-val">Sydney, NSW — Australia</div></div></div>
-    </div>
-  `,
-};
-
-// ─────────────────────────────────────────
-// 7. SCREEN HTML (must be before CSS3DObject)
-// ─────────────────────────────────────────
+ 
 const screenDiv = document.createElement('div');
 screenDiv.id = 'screen-root';
 screenDiv.innerHTML = `
-  <div class="screen-inner">
-    <div class="crt-lines"></div>
-    <div class="screen-header">
-      <div class="header-left">
-        <span class="header-dot"></span>
-        <span class="header-dot"></span>
-        <span class="header-dot"></span>
-      </div>
-      <div class="header-title">FLAME-OS  v1.0.3</div>
-      <div class="header-right">SYD/AU</div>
+  <div class="os-desktop">
+ 
+    <!-- BOOT SCREEN (fades after 2.2s) -->
+    <div class="os-boot">
+      <div class="boot-logo">JAYDEN'S RESUME</div>
+      <div class="boot-sub">Version 1.0.3  —  Cybersecurity Student</div>
+      <div class="boot-bar-track"><div class="boot-bar-fill"></div></div>
+      <div class="boot-text">Loading user profile...</div>
     </div>
-    <div class="screen-body">
-      <div class="welcome-block">
-        <div class="welcome-pre">WELCOME TO</div>
-        <div class="name-display">FLAME<span class="cursor">█</span></div>
-        <div class="welcome-sub">CYBERSECURITY · UTS · AVAILABLE FOR HIRE</div>
+ 
+    <!-- DESKTOP ICONS -->
+    <div class="desktop-icons">
+      <div class="desktop-icon" data-win="win-resume">
+        <div class="icon-img">📄</div>
+        <div class="icon-label">Resume.txt</div>
       </div>
-      <div class="nav-grid">
-        <button class="nav-btn" data-panel="resume">
-          <span class="btn-num">F1</span>
-          <span class="btn-icon">▤</span>
-          <span class="btn-label">RESUME</span>
-          <span class="btn-desc">Experience & Skills</span>
-        </button>
-        <button class="nav-btn" data-panel="projects">
-          <span class="btn-num">F2</span>
-          <span class="btn-icon">◈</span>
-          <span class="btn-label">PROJECTS</span>
-          <span class="btn-desc">Things I've Built</span>
-        </button>
-        <button class="nav-btn" data-panel="hobbies">
-          <span class="btn-num">F3</span>
-          <span class="btn-icon">◉</span>
-          <span class="btn-label">HOBBIES</span>
-          <span class="btn-desc">Life & Interests</span>
-        </button>
-        <button class="nav-btn" data-panel="contact">
-          <span class="btn-num">F4</span>
-          <span class="btn-icon">✦</span>
-          <span class="btn-label">CONTACT</span>
-          <span class="btn-desc">Get In Touch</span>
-        </button>
+      <div class="desktop-icon" data-win="win-skills">
+        <div class="icon-img">💾</div>
+        <div class="icon-label">My Skills.txt</div>
       </div>
-      <div class="status-row">
-        <span class="status-pill"><span class="blink-dot"></span>ONLINE</span>
-        <span>UTS CYBERSECURITY · YEAR 3</span>
-        <span class="status-time" id="screen-clock">--:--:--</span>
+      <div class="desktop-icon" data-win="win-projects">
+        <div class="icon-img">📁</div>
+        <div class="icon-label">Projects</div>
+      </div>
+      <div class="desktop-icon" data-win="win-hobbies">
+        <div class="icon-img">🎮</div>
+        <div class="icon-label">Hobbies.exe</div>
+      </div>
+      <div class="desktop-icon" data-win="win-contact">
+        <div class="icon-img">📡</div>
+        <div class="icon-label">Contact.sys</div>
       </div>
     </div>
-    <div id="panel-overlay" style="display:none;">
-      <div class="panel-box">
-        <button class="panel-close" id="panel-close-btn">[ CLOSE ]</button>
-        <div id="panel-content"></div>
+ 
+    <!-- ══ WINDOWS ══ -->
+ 
+    <!-- RESUME WINDOW -->
+    <div class="os-window" id="win-resume" style="top:60px; left:100px; width:520px;">
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-icon">📄</span>
+          <span class="win-title">Resume.txt — Notepad</span>
+        </div>
+        <div class="win-controls">
+          <button class="win-ctrl-btn">_</button>
+          <button class="win-ctrl-btn">□</button>
+          <button class="win-ctrl-btn close-btn" data-close="win-resume">✕</button>
+        </div>
+      </div>
+      <div class="win-menubar">
+        <span class="win-menu-item">File</span>
+        <span class="win-menu-item">Edit</span>
+        <span class="win-menu-item">View</span>
+        <span class="win-menu-item">Help</span>
+      </div>
+      <div class="win-body">
+        <div class="txt-viewer">═══════════════════════════════════════
+  RESUME.TXT — Flame Galanis
+  Cybersecurity Student @ UTS, Sydney AU
+═══════════════════════════════════════
+ 
+EDUCATION
+─────────────────────────────────────
+  Degree:   Bachelor of Science (Cybersecurity)
+  Uni:      University of Technology Sydney
+  Year:     Year 3 (2022 – Present)
+  Focus:    Network Security, Cloud, Software Dev
+ 
+EXPERIENCE
+─────────────────────────────────────
+  [1] Datapack Developer & Community Manager
+      Independent · Minecraft Ecosystem
+      • Shipped datapack with 1000+ downloads
+      • Manages Discord community & support
+      • Custom mechanics, items, progression
+ 
+  [2] Python Network Tooling
+      Academic & Personal Projects (2023–Now)
+      • Network diagnostics & automation
+      • AWS security groups via boto3
+      • Port scanning & latency monitoring
+ 
+  [3] Hardware & IT Support
+      • EFTPOS/ATM staging & deployment
+      • Helpdesk L1/L2 support
+      • Hardware imaging and configuration
+ 
+EDUCATION HIGHLIGHTS
+─────────────────────────────────────
+  • Network Security fundamentals
+  • Cloud infrastructure (AWS)
+  • Firewall configuration
+  • Linux administration
+  • Software development (Python, JS)
+ 
+═══════════════════════════════════════
+  [Open My Skills.txt for skill ratings]
+═══════════════════════════════════════</div>
+      </div>
+      <div class="win-statusbar">
+        <span>Ln 1, Col 1</span>
+        <span>100%</span>
+        <span>UTF-8</span>
       </div>
     </div>
+ 
+    <!-- SKILLS WINDOW -->
+    <div class="os-window" id="win-skills" style="top:80px; left:130px; width:460px;">
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-icon">💾</span>
+          <span class="win-title">My Skills.txt — Notepad</span>
+        </div>
+        <div class="win-controls">
+          <button class="win-ctrl-btn">_</button>
+          <button class="win-ctrl-btn">□</button>
+          <button class="win-ctrl-btn close-btn" data-close="win-skills">✕</button>
+        </div>
+      </div>
+      <div class="win-menubar">
+        <span class="win-menu-item">File</span>
+        <span class="win-menu-item">Edit</span>
+        <span class="win-menu-item">View</span>
+      </div>
+      <div class="win-body">
+        <div style="font-family:'VT323',monospace; font-size:20px; color:#000080; margin-bottom:10px;">
+          ══ SKILL ASSESSMENT v1.0 ══
+        </div>
+        <div class="skill-line"><span class="skill-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div><span class="skill-pct">80%</span></div>
+        <div class="skill-line"><span class="skill-name">AWS / Cloud</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div><span class="skill-pct">65%</span></div>
+        <div class="skill-line"><span class="skill-name">Networking</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
+        <div class="skill-line"><span class="skill-name">Linux</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div><span class="skill-pct">70%</span></div>
+        <div class="skill-line"><span class="skill-name">Firewall Config</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div><span class="skill-pct">60%</span></div>
+        <div class="skill-line"><span class="skill-name">Git</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div><span class="skill-pct">72%</span></div>
+        <div class="skill-line"><span class="skill-name">Helpdesk L1/L2</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+        <div class="skill-line"><span class="skill-name">Hardware Staging</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skill-line"><span class="skill-name">EFTPOS / ATM</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div><span class="skill-pct">70%</span></div>
+        <div class="skill-line"><span class="skill-name">Three.js / WebGL</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div><span class="skill-pct">55%</span></div>
+        <div class="skill-line"><span class="skill-name">Blender</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:50%"></div></div><span class="skill-pct">50%</span></div>
+        <div class="skill-line"><span class="skill-name">mcfunction / JSON</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div><span class="skill-pct">88%</span></div>
+      </div>
+      <div class="win-statusbar">
+        <span>12 skills loaded</span>
+        <span>Ready</span>
+      </div>
+    </div>
+ 
+    <!-- PROJECTS WINDOW -->
+    <div class="os-window" id="win-projects" style="top:50px; left:110px; width:540px;">
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-icon">📁</span>
+          <span class="win-title">Projects — File Explorer</span>
+        </div>
+        <div class="win-controls">
+          <button class="win-ctrl-btn">_</button>
+          <button class="win-ctrl-btn">□</button>
+          <button class="win-ctrl-btn close-btn" data-close="win-projects">✕</button>
+        </div>
+      </div>
+      <div class="win-menubar">
+        <span class="win-menu-item">File</span>
+        <span class="win-menu-item">Edit</span>
+        <span class="win-menu-item">View</span>
+        <span class="win-menu-item">Go</span>
+        <span class="win-menu-item">Help</span>
+      </div>
+      <div class="win-body" style="background:#fff;">
+        <div style="font-family:'Share Tech Mono',monospace; font-size:11px; color:#808080; margin-bottom:8px; padding:4px; background:#c0c0c0; border-bottom:1px solid #808080;">
+          C:\Users\Flame\Projects\
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">⛏ Minecraft Datapack</div>
+          <div class="proj-desc">Custom game mechanics, items, and progression system built from scratch using mcfunction and JSON. 1000+ downloads with an active Discord community and ongoing end-user support.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">mcfunction</span>
+            <span class="proj-tag">JSON</span>
+            <span class="proj-tag">Community Mgmt</span>
+            <span class="proj-tag">1000+ DL</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">🐍 Python Network Tools</div>
+          <div class="proj-desc">Network diagnostic and automation scripts. AWS security group management via boto3, port scanning, latency monitoring, and firewall rule automation.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">AWS</span>
+            <span class="proj-tag">boto3</span>
+            <span class="proj-tag">Networking</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-title">💻 This 3D Portfolio</div>
+          <div class="proj-desc">Interactive 3D portfolio built with Three.js and a custom Blender model. Frutiger Aero world environment with a vintage computer and retro OS screen. You're inside it right now.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Three.js</span>
+            <span class="proj-tag">Blender</span>
+            <span class="proj-tag">WebGL</span>
+            <span class="proj-tag">CSS3D</span>
+          </div>
+        </div>
+      </div>
+      <div class="win-statusbar">
+        <span>3 objects</span>
+        <span>Local Drive (C:)</span>
+      </div>
+    </div>
+ 
+    <!-- HOBBIES WINDOW -->
+    <div class="os-window" id="win-hobbies" style="top:90px; left:120px; width:440px;">
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-icon">🎮</span>
+          <span class="win-title">Hobbies.exe</span>
+        </div>
+        <div class="win-controls">
+          <button class="win-ctrl-btn">_</button>
+          <button class="win-ctrl-btn">□</button>
+          <button class="win-ctrl-btn close-btn" data-close="win-hobbies">✕</button>
+        </div>
+      </div>
+      <div class="win-body">
+        <div style="font-family:'VT323',monospace; font-size:20px; color:#000080; margin-bottom:10px;">Life Beyond the Terminal</div>
+        <div class="hobby-win-grid">
+          <div class="hobby-win-item">
+            <span class="hobby-win-icon">⛏</span>
+            <span class="hobby-win-label">Minecraft</span>
+            <span class="hobby-win-desc">Modding & datapacks</span>
+          </div>
+          <div class="hobby-win-item">
+            <span class="hobby-win-icon">🔐</span>
+            <span class="hobby-win-label">CTF Challenges</span>
+            <span class="hobby-win-desc">Security puzzles</span>
+          </div>
+          <div class="hobby-win-item">
+            <span class="hobby-win-icon">🎮</span>
+            <span class="hobby-win-label">Gaming</span>
+            <span class="hobby-win-desc">Strategy & sandbox</span>
+          </div>
+          <div class="hobby-win-item">
+            <span class="hobby-win-icon">☁️</span>
+            <span class="hobby-win-label">Cloud Tinkering</span>
+            <span class="hobby-win-desc">AWS home lab</span>
+          </div>
+          <div class="hobby-win-item">
+            <span class="hobby-win-icon">🌐</span>
+            <span class="hobby-win-label">Communities</span>
+            <span class="hobby-win-desc">Building online spaces</span>
+          </div>
+          <div class="hobby-win-item">
+            <span class="hobby-win-icon">📚</span>
+            <span class="hobby-win-label">Self-Learning</span>
+            <span class="hobby-win-desc">Always something new</span>
+          </div>
+        </div>
+      </div>
+      <div class="win-statusbar"><span>6 items</span><span>Ready</span></div>
+    </div>
+ 
+    <!-- CONTACT WINDOW -->
+    <div class="os-window" id="win-contact" style="top:100px; left:140px; width:420px;">
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-icon">📡</span>
+          <span class="win-title">Contact.sys — System Info</span>
+        </div>
+        <div class="win-controls">
+          <button class="win-ctrl-btn">_</button>
+          <button class="win-ctrl-btn">□</button>
+          <button class="win-ctrl-btn close-btn" data-close="win-contact">✕</button>
+        </div>
+      </div>
+      <div class="win-body">
+        <div style="font-family:'VT323',monospace; font-size:20px; color:#000080; margin-bottom:10px;">
+          ══ SYSTEM CONTACT INFO ══
+        </div>
+        <div class="contact-win-row">
+          <span class="contact-win-icon">✉</span>
+          <div>
+            <span class="contact-win-label">Electronic Mail</span>
+            <span class="contact-win-val">flame@example.com</span>
+          </div>
+        </div>
+        <div class="contact-win-row">
+          <span class="contact-win-icon">💼</span>
+          <div>
+            <span class="contact-win-label">LinkedIn</span>
+            <span class="contact-win-val">linkedin.com/in/flame</span>
+          </div>
+        </div>
+        <div class="contact-win-row">
+          <span class="contact-win-icon">🐙</span>
+          <div>
+            <span class="contact-win-label">GitHub</span>
+            <span class="contact-win-val">github.com/flame</span>
+          </div>
+        </div>
+        <div class="contact-win-row">
+          <span class="contact-win-icon">📍</span>
+          <div>
+            <span class="contact-win-label">Location</span>
+            <span class="contact-win-val">Sydney, NSW — Australia</span>
+          </div>
+        </div>
+        <div style="margin-top:12px; padding:8px; background:white; border:2px inset #808080; font-family:'Share Tech Mono',monospace; font-size:11px; color:#000080;">
+          STATUS: Seeking entry-level IT / helpdesk roles in Sydney.<br>
+          Open to on-site, hybrid, or remote positions.
+        </div>
+      </div>
+      <div class="win-statusbar"><span>Ready</span><span>SYD/AU</span></div>
+    </div>
+ 
+    <!-- TASKBAR -->
+    <div class="os-taskbar">
+      <button class="start-btn">
+        <div class="start-logo">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        Start
+      </button>
+      <div class="taskbar-divider"></div>
+      <div class="taskbar-clock" id="os-clock">00:00</div>
+    </div>
+ 
   </div>
 `;
-
+ 
+// ─────────────────────────────────────────
+// SCREEN INTERACTIONS
+// Replace everything from "// ── Clock" down to
+// "scene.add(cssObject);" with this block
+// ─────────────────────────────────────────
+ 
 // Clock
 setInterval(() => {
-  const el = document.getElementById('screen-clock');
-  if (el) el.textContent = new Date().toLocaleTimeString('en-AU', { hour12: false });
+  const el = screenDiv.querySelector('#os-clock');
+  if (el) el.textContent = new Date().toLocaleTimeString('en-AU', {
+    hour: '2-digit', minute: '2-digit', hour12: false
+  });
 }, 1000);
-
-// Nav buttons
+ 
+// ─── Window management ───────────────────
+const basePositions = {
+  'win-resume':   [100, 60],
+  'win-skills':   [130, 80],
+  'win-projects': [110, 50],
+  'win-hobbies':  [120, 90],
+  'win-contact':  [140, 100],
+};
+ 
+function openWindow(id) {
+  const win = screenDiv.querySelector('#' + id);
+  if (!win) return;
+  const [bx, by] = basePositions[id] || [100, 60];
+  const jitter = Math.round(Math.random() * 20 - 10);
+  win.style.left = (bx + jitter) + 'px';
+  win.style.top  = (by + jitter) + 'px';
+  win.classList.add('open');
+  focusWindow(win);
+}
+ 
+function closeWindow(id) {
+  const win = screenDiv.querySelector('#' + id);
+  if (!win) return;
+  win.classList.remove('open', 'focused');
+  win.style.zIndex = '10';
+}
+ 
+function focusWindow(win) {
+  screenDiv.querySelectorAll('.os-window').forEach(w => {
+    w.classList.remove('focused');
+    w.style.zIndex = '10';
+  });
+  win.classList.add('focused');
+  win.style.zIndex = '20';
+}
+ 
+// ─── Single drag state (shared across all windows) ───────────
+let dragState = null;
+// dragState = { win, lastX, lastY }
+ 
+// ─── All mouse events on ONE listener each ───────────────────
+ 
+// mousedown — start drag OR focus window
+screenDiv.addEventListener('mousedown', (e) => {
+  const titlebar = e.target.closest('.win-titlebar');
+  if (titlebar && !e.target.closest('.win-controls')) {
+    const win = titlebar.closest('.os-window');
+    if (win) {
+      dragState = { win, lastX: e.clientX, lastY: e.clientY };
+      focusWindow(win);
+      e.preventDefault();
+      return;
+    }
+  }
+  // Focus window on any click inside it
+  const win = e.target.closest('.os-window');
+  if (win) focusWindow(win);
+});
+ 
+// mousemove — drag the active window
+screenDiv.addEventListener('mousemove', (e) => {
+  if (!dragState) return;
+  const dx = e.clientX - dragState.lastX;
+  const dy = e.clientY - dragState.lastY;
+  dragState.lastX = e.clientX;
+  dragState.lastY = e.clientY;
+  const win = dragState.win;
+  win.style.left = ((parseInt(win.style.left) || 0) + dx) + 'px';
+  win.style.top  = ((parseInt(win.style.top)  || 0) + dy) + 'px';
+});
+ 
+// mouseup / mouseleave — stop drag
+screenDiv.addEventListener('mouseup',    () => { dragState = null; });
+screenDiv.addEventListener('mouseleave', () => { dragState = null; });
+ 
+// DEBUG — shows where clicks actually land
 screenDiv.addEventListener('click', (e) => {
-  const btn = e.target.closest('.nav-btn');
-  if (btn) {
-    const id = btn.dataset.panel;
-    document.getElementById('panel-content').innerHTML = panels[id];
-    document.getElementById('panel-overlay').style.display = 'flex';
-  }
-  if (e.target.id === 'panel-close-btn' || e.target.id === 'panel-overlay') {
-    document.getElementById('panel-overlay').style.display = 'none';
-  }
+  const dot = document.createElement('div');
+  dot.style.cssText = `position:absolute;width:10px;height:10px;background:red;border-radius:50%;left:${e.offsetX-5}px;top:${e.offsetY-5}px;pointer-events:none;z-index:9999`;
+  screenDiv.querySelector('.os-desktop').appendChild(dot);
+  setTimeout(() => dot.remove(), 1000);
 });
 
+// click — icons and close buttons
+screenDiv.addEventListener('click', (e) => {
+  // Close button
+  const closeBtn = e.target.closest('.close-btn');
+  if (closeBtn) {
+    closeWindow(closeBtn.dataset.close);
+    e.stopPropagation();
+    return;
+  }
+ 
+  // Desktop icon — manual double-click via data attribute
+  const icon = e.target.closest('.desktop-icon');
+  if (icon) {
+    const now = Date.now();
+    const last = parseInt(icon.dataset.lastClick || '0');
+ 
+    screenDiv.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+    icon.classList.add('selected');
+ 
+    if (now - last < 500) {
+      openWindow(icon.dataset.win);
+      icon.dataset.lastClick = '0';
+    } else {
+      icon.dataset.lastClick = String(now);
+    }
+    e.stopPropagation();
+    return;
+  }
+ 
+  // Bare desktop — deselect icons
+  if (e.target.classList.contains('os-desktop')) {
+    screenDiv.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+  }
+});
+ 
 // ─────────────────────────────────────────
-// 8. CSS3D OBJECT (created AFTER screenDiv exists)
+// CSS3D OBJECT (created AFTER screenDiv exists)
 // ─────────────────────────────────────────
 const cssObject = new CSS3DObject(screenDiv);
 cssObject.visible = false;
-// Position and scale are set by the loader once ScreenPlane is found
 scene.add(cssObject);
+
 
 // ─────────────────────────────────────────
 // 9. CSS3D RENDERER
@@ -343,7 +628,11 @@ cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.domElement.style.position = 'fixed';
 cssRenderer.domElement.style.top = '0';
 cssRenderer.domElement.style.pointerEvents = 'none';
+// ADD THESE TWO:
+cssRenderer.domElement.style.transformOrigin = 'top left';
+cssRenderer.domElement.style.left = '0';
 document.body.appendChild(cssRenderer.domElement);
+
 
 // ─────────────────────────────────────────
 // 10. GRASS FUNCTION
